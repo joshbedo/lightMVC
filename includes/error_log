@@ -1,0 +1,1 @@
+[29-Mar-2013 02:39:38] PHP Fatal error:  Call to undefined function  phpsession_start() in /home/imstillr/public_html/customer/includes/validate.php on line 1

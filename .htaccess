@@ -1,0 +1,16 @@
+RewriteEngine on
+
+# First check it's not a file
+RewriteBase /customer/
+RewriteCond %{REQUEST_FILENAME} !-f
+# And it doesn't end in /
+RewriteCond %{REQUEST_URI} !.*/$
+# Send the redirect. I would do 301 (permanent) here
+# the "L" means the rest of the rules are ignored for this request
+RewriteRule ^(.*)$ $1/ [L,R=301]
+
+# Now pass thru to your old ruleset URLs the slash-checker didn't catch
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?rt=$1 [QSA]
